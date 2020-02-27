@@ -39,6 +39,7 @@ public class GlobalExceptionHandler {
             return R.fail(commonError);
         }
 
+
         else {
             //其他的为 未知错误 防止入侵
             CommonError commonError = new CommonError(BusinessErrorEnum.UNKNOWN_ERROR);

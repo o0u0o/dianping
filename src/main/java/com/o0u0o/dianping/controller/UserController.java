@@ -4,15 +4,20 @@ import com.o0u0o.dianping.commom.CommonError;
 import com.o0u0o.dianping.commom.R;
 import com.o0u0o.dianping.commom.enums.BusinessErrorEnum;
 import com.o0u0o.dianping.commom.exception.BusinessException;
+import com.o0u0o.dianping.commom.utils.CommonUtil;
 import com.o0u0o.dianping.model.UserModel;
+import com.o0u0o.dianping.request.RegisterReq;
 import com.o0u0o.dianping.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @Author aiuiot
@@ -49,5 +54,17 @@ public class UserController {
             //return R.fail(new CommonError(BusinessErrorEnum.NO_OBJECT_FOUND));
         }
         return R.success(userModel);
+    }
+
+    @RequestMapping("/register")
+    @ResponseBody
+    public R register(@Valid @RequestBody RegisterReq registerReq, BindingResult bindingResult) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
+        if (bindingResult.hasErrors()){
+            throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR, CommonUtil.processErrorString(bindingResult));
+        }
+        UserModel registerUser = new UserModel();
+        BeanUtils.copyProperties(registerReq, registerUser);
+        UserModel resUserModel = userService.register(registerUser);
+        return R.success(resUserModel);
     }
 }

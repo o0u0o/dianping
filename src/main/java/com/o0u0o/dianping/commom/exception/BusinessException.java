@@ -20,4 +20,10 @@ public class BusinessException extends Exception{
         this.commonError = new CommonError(businessErrorEnum);
     }
 
+    public BusinessException(BusinessErrorEnum businessErrorEnum, String errMsg){
+        super();
+        this.commonError = new CommonError(businessErrorEnum);
+        this.commonError.setErrMsg(errMsg);
+    }
+
 }
