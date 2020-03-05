@@ -19,7 +19,6 @@ public class CommonUtil {
             stringBuilder.append(fieldError.getDefaultMessage() + ',');
         }
         //删除最后一个逗号的拼接
-        stringBuilder.substring(0, stringBuilder.length()-1);
-        return stringBuilder.toString();
+        return stringBuilder.substring(0, stringBuilder.length()-1);
     }
 }

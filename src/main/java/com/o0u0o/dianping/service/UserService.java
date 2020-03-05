@@ -14,13 +14,25 @@ import java.security.NoSuchAlgorithmException;
  **/
 public interface UserService {
 
-    UserModel getUser(Integer id);
+    UserModel getUser(Integer id) throws BusinessException;
+
 
     /**
      * 注册用户
      * @param registerUser
      * @return
+     * @throws BusinessException
+     * @throws UnsupportedEncodingException
+     * @throws NoSuchAlgorithmException
      */
     UserModel register(UserModel registerUser) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException;
+
+    /**
+     * 用户登录
+     * @param telephone 手机号
+     * @param password 密码
+     * @return
+     */
+    UserModel login(String telephone, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException, BusinessException;
 
 }

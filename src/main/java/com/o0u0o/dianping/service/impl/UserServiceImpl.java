@@ -5,6 +5,7 @@ import com.o0u0o.dianping.commom.exception.BusinessException;
 import com.o0u0o.dianping.dal.UserModelMapper;
 import com.o0u0o.dianping.model.UserModel;
 import com.o0u0o.dianping.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,21 @@ import java.util.Date;
  * @Descripton: 用户服务实现
  **/
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserModelMapper userModelMapper;
 
     @Override
-    public UserModel getUser(Integer id) {
-
-        return userModelMapper.selectByPrimaryKey(id);
+    public UserModel getUser(Integer id) throws BusinessException {
+        UserModel userModel = userModelMapper.selectByPrimaryKey(id);
+        if (userModel == null){
+            throw new BusinessException(BusinessErrorEnum.USER_DOES_NOT_EXIST);
+        }
+        //敏感信息脱敏
+        userModel.setPassword(null);
+        return userModel;
     }
 
     /**
@@ -54,6 +61,21 @@ public class UserServiceImpl implements UserService {
         }
 
         return getUser(registerUser.getId());
+    }
+
+    /**
+     * 用户登录
+     * @param telphone 手机号
+     * @param password 密码
+     * @return
+     */
+    @Override
+    public UserModel login(String telphone, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException, BusinessException {
+        UserModel userModel = userModelMapper.selectByTelephoneAndPassword(telphone, encodeByMd5(password));
+        if (userModel == null){
+            throw new BusinessException(BusinessErrorEnum.LOGIN_FAIL);
+        }
+        return userModel;
     }
 
     private String encodeByMd5(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {

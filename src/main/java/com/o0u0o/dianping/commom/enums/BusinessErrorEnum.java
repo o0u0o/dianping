@@ -27,7 +27,11 @@ public enum BusinessErrorEnum {
     /**
      * 用户服务相关的错误类型
      */
-    REGISTER_DUP_FAIL(20001, "用户已存在")
+    REGISTER_DUP_FAIL(20001, "用户已存在"),
+
+    LOGIN_FAIL(20002, "手机号或密码错误"),
+
+    USER_DOES_NOT_EXIST(20003, "用户不存在")
     ;
 
     private Integer errCode;

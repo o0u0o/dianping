@@ -40,6 +40,7 @@ public class GlobalExceptionHandler {
         }
 
 
+
         else {
             //其他的为 未知错误 防止入侵
             CommonError commonError = new CommonError(BusinessErrorEnum.UNKNOWN_ERROR);
