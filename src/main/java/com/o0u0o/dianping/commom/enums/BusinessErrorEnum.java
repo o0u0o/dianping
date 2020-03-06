@@ -31,7 +31,12 @@ public enum BusinessErrorEnum {
 
     LOGIN_FAIL(20002, "手机号或密码错误"),
 
-    USER_DOES_NOT_EXIST(20003, "用户不存在")
+    USER_DOES_NOT_EXIST(20003, "用户不存在"),
+
+    /**
+     * 品类相关错误
+     */
+    CATEGORY_NAME_DUPLICATED(40001, "品类名已存在")
     ;
 
     private Integer errCode;
