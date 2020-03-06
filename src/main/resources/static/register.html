@@ -162,7 +162,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         $("#registerBtn").on("click",function(){
-            var telphone=$("#telphone").val();
+            var telephone=$("#telphone").val();
             var password=$("#password").val();
             var nickName=$("#nickName").val();
             var gender=$("#gender").val();
@@ -171,7 +171,7 @@
                 contentType:"application/json;charset=utf-8",
                 url:"/user/register",
                 data:JSON.stringify({
-                    "telphone":telphone,
+                    "telephone":telephone,
                     "password":password,
                     "nickName":nickName,
                     "gender":gender
