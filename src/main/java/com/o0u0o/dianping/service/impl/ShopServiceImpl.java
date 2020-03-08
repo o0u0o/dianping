@@ -1,12 +1,20 @@
 package com.o0u0o.dianping.service.impl;
 
+import com.o0u0o.dianping.commom.enums.BusinessErrorEnum;
+import com.o0u0o.dianping.commom.exception.BusinessException;
 import com.o0u0o.dianping.dal.ShopModelMapper;
+import com.o0u0o.dianping.model.CategoryModel;
+import com.o0u0o.dianping.model.SellerModel;
 import com.o0u0o.dianping.model.ShopModel;
+import com.o0u0o.dianping.service.CategoryService;
+import com.o0u0o.dianping.service.SellerService;
 import com.o0u0o.dianping.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,15 +26,56 @@ import java.util.List;
 public class ShopServiceImpl implements ShopService {
 
     @Autowired
-    ShopModelMapper shopModelMapper;
+    private ShopModelMapper shopModelMapper;
 
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private SellerService sellerService;
+
+    /**
+     * 创建门店
+     * @param shopModel 门店模型
+     * @return
+     */
     @Override
-    public ShopModel create(ShopModel shopModel) {
-        return null;
+    @Transactional
+    public ShopModel create(ShopModel shopModel) throws BusinessException {
+        shopModel.setCreatedAt(new Date());
+        shopModel.setUpdatedAt(new Date());
+
+        //校验商家是否存在正确
+        SellerModel sellerModel = sellerService.get(shopModel.getSellerId());
+        if (sellerModel == null){
+            throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR, "商户不存在");
+        }
+
+        if (sellerModel.getDisabledFlag().intValue() == 1){
+            throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR, "商户被禁用");
+        }
+
+        //校验类目
+        CategoryModel categoryModel = categoryService.get(shopModel.getCategoryId());
+        if (categoryModel == null){
+            throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR, "类目不存在");
+        }
+
+        shopModelMapper.insert(shopModel);
+        return get(shopModel.getId());
     }
 
+    /**
+     * 根据门店ID获取门店
+     * @param id 门店ID
+     * @return
+     */
     @Override
     public ShopModel get(Integer id) {
+        ShopModel shopModel = shopModelMapper.selectByPrimaryKey(id);
+        if (shopModel == null){
+            return null;
+        }
         return null;
     }
 

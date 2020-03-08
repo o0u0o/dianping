@@ -1,5 +1,6 @@
 package com.o0u0o.dianping.service;
 
+import com.o0u0o.dianping.commom.exception.BusinessException;
 import com.o0u0o.dianping.model.ShopModel;
 
 import java.math.BigDecimal;
@@ -17,7 +18,7 @@ public interface ShopService {
      * @param shopModel
      * @return
      */
-    ShopModel create(ShopModel shopModel);
+    ShopModel create(ShopModel shopModel) throws BusinessException;
 
     /**
      * 获取门店

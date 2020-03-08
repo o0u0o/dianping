@@ -28,5 +28,6 @@ public class SellerModel {
     /** 评分 */
     private BigDecimal remarkScore;
 
+    /** 是否被禁用 1-被禁用 */
     private Integer disabledFlag;
 }
