@@ -13,18 +13,19 @@ import java.util.Date;
 @Data
 public class SellerModel {
 
+    /** 商家ID */
     private Integer id;
 
-
+    /** 商家名 */
     private String name;
 
-
+    /** 创建时间 */
     private Date createdAt;
 
-
+    /** 更新时间 */
     private Date updatedAt;
 
-
+    /** 评分 */
     private BigDecimal remarkScore;
 
     private Integer disabledFlag;

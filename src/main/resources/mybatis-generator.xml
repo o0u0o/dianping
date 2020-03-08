@@ -4,9 +4,12 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 
-    <context id="DB2Tables"    targetRuntime="MyBatis3">
+    <context id="DB2Tables" targetRuntime="MyBatis3">
         <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/dianpingdb" userId="root" password="Mysql8.0">
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/dianpingdb"
+                        userId="root"
+                        password="Mysql8.0">
         </jdbcConnection>
 
         <!--生成DataObject类存放位置-->
