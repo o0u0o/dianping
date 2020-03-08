@@ -17,6 +17,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
+import static com.o0u0o.dianping.commom.utils.encryptPwdUtil.encodeByMd5;
+
 /**
  * @Author aiuiot
  * @Date 2020/2/27 12:13 上午
@@ -78,11 +80,5 @@ public class UserServiceImpl implements UserService {
         return userModel;
     }
 
-    private String encodeByMd5(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        //确认计算方法为MD5
-        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-        BASE64Encoder base64Encoder = new BASE64Encoder();
-        return base64Encoder.encode(messageDigest.digest(password.getBytes("utf-8")));
 
-    }
 }

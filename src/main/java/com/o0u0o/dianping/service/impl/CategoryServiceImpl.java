@@ -1,5 +1,7 @@
 package com.o0u0o.dianping.service.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.o0u0o.dianping.commom.enums.BusinessErrorEnum;
 import com.o0u0o.dianping.commom.exception.BusinessException;
 import com.o0u0o.dianping.dal.CategoryModelMapper;

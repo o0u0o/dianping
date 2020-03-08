@@ -2,8 +2,6 @@ package com.o0u0o.dianping.service.impl;
 
 import com.o0u0o.dianping.dal.ShopModelMapper;
 import com.o0u0o.dianping.model.ShopModel;
-import com.o0u0o.dianping.service.CategoryService;
-import com.o0u0o.dianping.service.SellerService;
 import com.o0u0o.dianping.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +18,7 @@ import java.util.List;
 public class ShopServiceImpl implements ShopService {
 
     @Autowired
-    private ShopModelMapper shopModelMapper;
-
-    @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
-    private SellerService sellerService;
+    ShopModelMapper shopModelMapper;
 
     @Override
     public ShopModel create(ShopModel shopModel) {
@@ -68,7 +60,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     /**
-     * 搜索门店
+     * 搜索闷蛋
      * @param longitude 经度
      * @param latitude 纬度
      * @param keyword 关键词
@@ -81,11 +73,12 @@ public class ShopServiceImpl implements ShopService {
     public List<ShopModel> search(BigDecimal longitude, BigDecimal latitude,
                                   String keyword, Integer orderby,
                                   Integer categoryId, String tags) {
-        List<ShopModel> shopModelList = shopModelMapper.search(longitude,latitude,keyword,orderby,categoryId,tags);
-        shopModelList.forEach(shopModel -> {
-            shopModel.setSellerModel(sellerService.get(shopModel.getSellerId()));
-            shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
-        });
-        return shopModelList;
+//        List<ShopModel> shopModelList = shopModelMapper.search(longitude,latitude,keyword,orderby,categoryId,tags);
+//        shopModelList.forEach(shopModel -> {
+//            shopModel.setSellerModel(sellerService.get(shopModel.getSellerId()));
+//            shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
+//        });
+//        return shopModelList;
+        return null;
     }
 }
