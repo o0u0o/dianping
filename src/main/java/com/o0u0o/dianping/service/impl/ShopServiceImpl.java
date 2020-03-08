@@ -76,7 +76,9 @@ public class ShopServiceImpl implements ShopService {
         if (shopModel == null){
             return null;
         }
-        return null;
+        shopModel.setSellerModel(sellerService.get(shopModel.getSellerId()));
+        shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
+        return shopModel;
     }
 
     /**
@@ -87,9 +89,10 @@ public class ShopServiceImpl implements ShopService {
     public List<ShopModel> selectAll() {
         List<ShopModel> shopModelList = shopModelMapper.selectAll();
         shopModelList.forEach(shopModel -> {
-            //shopModel
+            shopModel.setSellerModel(sellerService.get(shopModel.getSellerId()));
+            shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
         });
-        return null;
+        return shopModelList;
     }
 
     /**
