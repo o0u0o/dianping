@@ -3,8 +3,10 @@ package com.o0u0o.dianping.service;
 import com.o0u0o.dianping.commom.exception.BusinessException;
 import com.o0u0o.dianping.model.ShopModel;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author aiuiot
@@ -63,4 +65,21 @@ public interface ShopService {
                            Integer orderby,
                            Integer categoryId,
                            String tags);
+
+    /**
+     *
+     * @param longitude
+     * @param latitude
+     * @param keyword
+     * @param orderby
+     * @param categoryId
+     * @param tags
+     * @return
+     */
+    Map<String, Object> searchES(BigDecimal longitude,
+                 BigDecimal latitude,
+                 String keyword,
+                 Integer orderby,
+                 Integer categoryId,
+                 String tags) throws IOException;
 }

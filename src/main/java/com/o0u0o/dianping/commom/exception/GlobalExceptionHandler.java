@@ -27,13 +27,13 @@ public class GlobalExceptionHandler {
             return R.fail(((BusinessException)exception).getCommonError());
         }
 
+        /** 404 异常处理 */
         if (exception instanceof NoHandlerFoundException){
-            //404 异常处理
             CommonError commonError = new CommonError(BusinessErrorEnum.NO_HANDLER_FOUND);
             return R.fail(commonError);
         }
 
-        // 请求参数错误
+        /** 请求参数错误 */
         if (exception instanceof ServletRequestBindingException){
             CommonError commonError = new CommonError(BusinessErrorEnum.BIND_EXCEPTION_ERROR);
             return R.fail(commonError);

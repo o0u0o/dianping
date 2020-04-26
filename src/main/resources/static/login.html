@@ -161,7 +161,7 @@
         });
 
         $("#loginBtn").on("click",function(){
-            var telephone=$("#telphone").val();
+            var telphone=$("#telphone").val();
             var password=$("#password").val();
 
             $.ajax({
@@ -169,7 +169,7 @@
                 contentType:"application/json;charset=utf-8",
                 url:"/user/login",
                 data:JSON.stringify({
-                    "telephone":telephone,
+                    "telphone":telphone,
                     "password":password
                 }),
                 success:function(data){

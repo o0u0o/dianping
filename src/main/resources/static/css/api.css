@@ -1,94 +1,94 @@
 html{
 
-    font-family: sans-serif;
+	font-family: sans-serif;
 
 }
 
 html,body,header,section,footer,div,ul,ol,li,img,a,span,em,del,legend,center,strong,var,fieldset,form,label,dl,dt,dd,cite,input,hr,time,mark,code,figcaption,figure,textarea,h1,h2,h3,h4,h5,h6,p{
 
-    margin:0;
+	margin:0;
 
-    border:0;
+	border:0;
 
-    padding:0;
+	padding:0;
 
-    font-style:normal;
+	font-style:normal;
 
-    color:rgb(50,50,50);
+	color:rgb(50,50,50);
 
 }
 
 html,body {
 
-    -webkit-touch-callout:none;
+	-webkit-touch-callout:none;
 
-    -webkit-text-size-adjust:none;
+	-webkit-text-size-adjust:none;
 
-    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 
-    -webkit-user-select:none;
+	-webkit-user-select:none;
 
-    background-color: #fff;
+	background-color: #fff;
 
 }
 
 nav,article,aside,details,main,header,footer,section,fieldset,figcaption,figure{
 
-    display: block;
+	display: block;
 
 }
 
 img,a,button,em,del,strong,var,label,cite,small,time,mark,code,textarea{
 
-    display:inline-block;
+	display:inline-block;
 
 }
 
 header,section,footer {
 
-    position:relative;
+	position:relative;
 
 }
 
 ol,ul{
 
-    list-style:none;
+	list-style:none;
 
 }
 
 input,button,textarea {
 
-    border:0;
+	border:0;
 
-    margin:0;
+	margin:0;
 
-    padding:0;
+	padding:0;
 
-    font-size:1em;
+	font-size:1em;
 
-    line-height:1em;
+	line-height:1em;
 
-    /*-webkit-appearance:none;*/
+	/*-webkit-appearance:none;*/
 
-    background-color:rgba(0, 0, 0, 0);
+	background-color:rgba(0, 0, 0, 0);
 
 }
 
 span{
 
-    display:inline-block;
+	display:inline-block;
 
 }
 
 a:active, a:hover {
 
-    outline: 0;
+  outline: 0;
 
 }
 
 a, a:visited{
 
-    text-decoration:none;
+	text-decoration:none;
 
 }
 
@@ -104,58 +104,58 @@ label, .wordWrap{
 
 table {
 
-    border-collapse: collapse;
+  border-collapse: collapse;
 
-    border-spacing: 0;
+  border-spacing: 0;
 
 }
 
 td,th {
 
-    padding: 0;
+  padding: 0;
 
 }
 
 .clearfix:after{
 
-    content: ' ';
+	content: ' ';
 
-    display: block;
+	display: block;
 
-    clear: both;
+	clear: both;
 
-    visibility:hidden;
+	visibility:hidden;
 
-    line-height: 0;
+	line-height: 0;
 
-    height:0;
+	height:0;
 
 }
 
 .loading_more{
 
-    display: block;
+	display: block;
 
-    height: 1.5em;
+	height: 1.5em;
 
-    width: 100%;
+	width: 100%;
 
 }
 
 .loading_more:before {
 
-    background-image: url(../image/loading_more.gif) 30% center;
+	background-image: url(../image/loading_more.gif) 30% center;
 
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
 
-    background-size: contain;
+	background-size: contain;
 
-    text-align: center;
+	text-align: center;
 
-}
+} 
 
 .loading_more:after {
 
-    content: '加载更多';
+	content: '加载更多';	
 
 }

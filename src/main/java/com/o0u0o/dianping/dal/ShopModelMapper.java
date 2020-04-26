@@ -30,7 +30,8 @@ public interface ShopModelMapper {
     int updateByPrimaryKey(ShopModel record);
 
     /** 推荐 */
-    List<ShopModel> recommend(@Param("longitude") BigDecimal longitude, @Param("latitude") BigDecimal latitude);
+    List<ShopModel> recommend(@Param("longitude") BigDecimal longitude,
+                              @Param("latitude") BigDecimal latitude);
 
     /** 搜索 */
     List<ShopModel> search(@Param("longitude") BigDecimal longitude,

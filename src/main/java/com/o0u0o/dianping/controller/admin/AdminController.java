@@ -1,5 +1,6 @@
 package com.o0u0o.dianping.controller.admin;
 
+import com.o0u0o.dianping.commom.AdminPermission;
 import com.o0u0o.dianping.commom.enums.BusinessErrorEnum;
 import com.o0u0o.dianping.commom.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,8 @@ public class AdminController {
      * @return
      */
     @RequestMapping("/index")
+    //@AdminPermission(produceType = "application/json")
+    @AdminPermission
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
         return modelAndView;
