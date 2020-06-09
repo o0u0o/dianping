@@ -53,7 +53,7 @@ public class UserController {
 
     @GetMapping("/get")
     @ResponseBody
-    public R getUser(@RequestParam(name = "id") Integer id) throws BusinessException {
+    public R getUser(@RequestParam(name = "id") Long id) throws BusinessException {
         UserModel userModel = userService.getUser(id);
         if (userModel == null){
             throw new BusinessException(BusinessErrorEnum.NO_OBJECT_FOUND);

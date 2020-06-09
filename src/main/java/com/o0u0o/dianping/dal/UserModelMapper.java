@@ -9,11 +9,11 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserModelMapper {
 
-    int insert(UserModel record);
+    Long insert(UserModel record);
 
-    int insertSelective(UserModel record);
+    Long insertSelective(UserModel record);
 
-    UserModel selectByPrimaryKey(Integer id);
+    UserModel selectByPrimaryKey(Long id);
 
     /**
      * 使用手机号和密码查询

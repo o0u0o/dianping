@@ -11,17 +11,7 @@ import java.util.Date;
 @Data
 public class UserModel implements Serializable {
 
-    private Integer id;
-
-    /**
-     * 创建时间
-     */
-    private Date createAt;
-
-    /**
-     * 更新时间
-     */
-    private Date updateAt;
+    private Long id;
 
     /**
      * 电话
@@ -42,4 +32,14 @@ public class UserModel implements Serializable {
      * 性别
      */
     private Integer gender;
+
+    /**
+     * 创建时间
+     */
+    private Date createdAt;
+
+    /**
+     * 更新时间
+     */
+    private Date updatedAt;
 }

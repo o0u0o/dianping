@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     private UserModelMapper userModelMapper;
 
     @Override
-    public UserModel getUser(Integer id) throws BusinessException {
+    public UserModel getUser(Long id) throws BusinessException {
         UserModel userModel = userModelMapper.selectByPrimaryKey(id);
         if (userModel == null){
             throw new BusinessException(BusinessErrorEnum.USER_DOES_NOT_EXIST);
@@ -52,11 +52,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserModel register(UserModel registerUser) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
         registerUser.setPassword(encodeByMd5(registerUser.getPassword()));
-        registerUser.setCreateAt(new Date());
-        registerUser.setUpdateAt(new Date());
+        registerUser.setCreatedAt(new Date());
+        registerUser.setUpdatedAt(new Date());
 
         try{
-            int i = userModelMapper.insertSelective(registerUser);
+            Long i = userModelMapper.insertSelective(registerUser);
             //捕获唯一键冲突
         }catch (DuplicateKeyException exception){
             throw new BusinessException(BusinessErrorEnum.REGISTER_DUP_FAIL);

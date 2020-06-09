@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
  **/
 public interface UserService {
 
-    UserModel getUser(Integer id) throws BusinessException;
+    UserModel getUser(Long id) throws BusinessException;
 
 
     /**

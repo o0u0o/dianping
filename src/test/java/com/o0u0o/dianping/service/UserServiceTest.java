@@ -18,7 +18,7 @@ public class UserServiceTest extends DianpingApplicationTests {
 
     @Test
     public void getUser() throws BusinessException {
-        Integer USER_ID = 2;
+        Long USER_ID = 2l;
         UserModel user = userService.getUser(USER_ID);
 
     }

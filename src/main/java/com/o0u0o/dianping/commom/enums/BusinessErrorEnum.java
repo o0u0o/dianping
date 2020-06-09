@@ -1,6 +1,5 @@
 package com.o0u0o.dianping.commom.enums;
 
-import lombok.Data;
 import lombok.Getter;
 
 /**
@@ -29,9 +28,8 @@ public enum BusinessErrorEnum {
      */
     REGISTER_DUP_FAIL(20001, "用户已存在"),
 
+
     LOGIN_FAIL(20002, "手机号或密码错误"),
-
-
 
 
     USER_DOES_NOT_EXIST(20003, "用户不存在"),

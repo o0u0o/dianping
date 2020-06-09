@@ -3,6 +3,7 @@ package com.o0u0o.dianping.commom.exception;
 import com.o0u0o.dianping.commom.CommonError;
 import com.o0u0o.dianping.commom.R;
 import com.o0u0o.dianping.commom.enums.BusinessErrorEnum;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @Date 2020/2/27 1:48 上午
  * @Descripton: 全局异常助手 - 统一处理异常
  **/
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -39,12 +41,17 @@ public class GlobalExceptionHandler {
             return R.fail(commonError);
         }
 
-
+        /** 运行时异常 */
+        if (exception instanceof RuntimeException){
+            log.info("【运行时异常】={}", exception.getMessage());
+            return R.fail(exception.getCause());
+        }
 
         else {
             //其他的为 未知错误 防止入侵
             CommonError commonError = new CommonError(BusinessErrorEnum.UNKNOWN_ERROR);
             return R.fail(commonError);
         }
+
     }
 }
