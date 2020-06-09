@@ -80,5 +80,14 @@ public class UserServiceImpl implements UserService {
         return userModel;
     }
 
+    /**
+     * 获取所有用户
+     * @return
+     */
+    @Override
+    public Integer countAllUser() {
+        return userModelMapper.countAllUser();
+    }
+
 
 }

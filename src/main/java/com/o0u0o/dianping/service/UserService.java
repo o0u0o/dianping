@@ -14,6 +14,12 @@ import java.security.NoSuchAlgorithmException;
  **/
 public interface UserService {
 
+    /**
+     * 获取用户
+     * @param id
+     * @return
+     * @throws BusinessException
+     */
     UserModel getUser(Long id) throws BusinessException;
 
 
@@ -34,5 +40,12 @@ public interface UserService {
      * @return
      */
     UserModel login(String telephone, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException, BusinessException;
+
+
+    /**
+     * 获取所有用户数量
+     * @return
+     */
+    Integer countAllUser();
 
 }

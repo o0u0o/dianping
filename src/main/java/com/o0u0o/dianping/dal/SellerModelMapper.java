@@ -26,5 +26,9 @@ public interface SellerModelMapper {
 
     int updateByPrimaryKey(SellerModel record);
 
+    /**
+     * 统计商家数
+     * @return
+     */
     Integer countAllSeller();
 }

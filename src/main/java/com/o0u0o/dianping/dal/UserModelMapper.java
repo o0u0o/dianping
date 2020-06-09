@@ -22,4 +22,10 @@ public interface UserModelMapper {
      * @return
      */
     UserModel selectByTelephoneAndPassword(@Param("telephone") String telephone, @Param("password") String password);
+
+    /**
+     * 统计用户注册数
+     * @return
+     */
+    Integer countAllUser();
 }

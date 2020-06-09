@@ -57,6 +57,10 @@ public class SellerServiceImpl implements SellerService {
         return sellerModel;
     }
 
+    /**
+     * 统计商家数
+     * @return
+     */
     @Override
     public Integer countAllSeller() {
         return sellerModelMapper.countAllSeller();
