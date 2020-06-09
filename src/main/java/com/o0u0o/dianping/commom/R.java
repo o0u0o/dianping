@@ -1,11 +1,12 @@
 package com.o0u0o.dianping.commom;
 
+import com.o0u0o.dianping.model.SellerModel;
 import lombok.Data;
 
 /**
  * @Author aiuiot
  * @Date 2020/2/27 1:20 上午
- * @Descripton: 通用返回
+ * @Descripton: 通用响应
  **/
 @Data
 public class R {
@@ -26,8 +27,11 @@ public class R {
         R r = new R();
         r.setStatus(status);
         r.setData(result);
-
         return r;
+    }
+
+    public static R create(Object result) {
+        return R.create(result,"success");
     }
 
     public String getStatus() {
