@@ -3,7 +3,6 @@ package com.o0u0o.dianping.controller.admin;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.o0u0o.dianping.commom.AdminPermission;
-import com.o0u0o.dianping.commom.CommonRes;
 import com.o0u0o.dianping.commom.R;
 import com.o0u0o.dianping.commom.enums.BusinessErrorEnum;
 import com.o0u0o.dianping.commom.enums.SellerStatusEnum;

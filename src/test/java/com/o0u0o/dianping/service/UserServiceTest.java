@@ -26,8 +26,8 @@ public class UserServiceTest extends DianpingApplicationTests {
     @Test
     public void register() throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
         UserModel userModel = new UserModel();
-        userModel.setTelephone("13009791526");
-        userModel.setNickName("小吧子");
+        userModel.setTelephone("13009791620");
+        userModel.setNickName("小贵子");
         userModel.setPassword("123456");
         userModel.setGender(1);
         UserModel register = userService.register(userModel);
@@ -36,7 +36,7 @@ public class UserServiceTest extends DianpingApplicationTests {
 
     @Test
     public void login() throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
-        String telephone = "13009791621";
+        String telephone = "13009791620";
         String password = "123456";
         UserModel login = userService.login(telephone, password);
         log.info("【登录成功】={}", login);
