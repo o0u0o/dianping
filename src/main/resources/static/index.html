@@ -269,7 +269,7 @@
 <script type="text/javascript" src="/static/script/jquery.min.js"></script>
 <script type="text/javascript" src="/static/script/bootstrap.js"></script>
 
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FqB15cbgf1pzWzum5ajGpTrcfr7b3b90"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BBkUU57psEi1rZHzvMNqWVC0zcyRb5af"></script>
 
 <script type="text/javascript">
 
@@ -316,6 +316,7 @@
                             for(var i = 0; i < dataList.length; i++){
                                 var distance = dataList[i].distance;
                                 var distanceStr = "0m";
+                                //举例计算
                                 if(distance >= 1000){
                                     distanceStr = getFloat(distance / 1000,1) + " km";
                                 }else{
@@ -424,8 +425,8 @@
         });
 
 
+        //搜索方法
         function searchMethod(){
-
             var orderby = "";
             var categoryFilter = "";
             var tagFilter = "";

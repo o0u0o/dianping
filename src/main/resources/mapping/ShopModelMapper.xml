@@ -36,6 +36,7 @@
         delete from shop
         where id = #{id,jdbcType=INTEGER}
     </delete>
+
     <insert id="insert" parameterType="com.o0u0o.dianping.model.ShopModel">
 
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -221,11 +222,12 @@
     </select>
 
     <select id="countAllShop"  resultType="java.lang.Integer">
-    select
-    count(1)
-    from shop
-  </select>
+        select
+        count(1)
+        from shop
+    </select>
 
+    <!-- 推荐 推荐 距离因子95%受地理 评分因子5%收评分影响  -->
     <select id="recommend" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
@@ -234,6 +236,7 @@
         from shop order by (0.95*1/log10(distance)+ 0.05*remark_score/5)  DESC
     </select>
 
+    <!--  门店搜索  -->
     <select id="search" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
@@ -243,21 +246,15 @@
         <if test="categoryId != null">
             and category_id = #{categoryId}
         </if>
-        <if test="tags != null">
-            and tags = #{tags}
-        </if>
-
         <if test="orderby == null">
             order by (0.95*1/log10(distance)+ 0.05*remark_score/5)  DESC
         </if>
         <if test="orderby == 1">
             order by price_per_man ASC,id ASC
         </if>
-
-
     </select>
 
-
+    <!--  根据标签分组进行搜索 CONCAT 关键字过滤的匹配  -->
     <select id="searchGroupByTags" resultType="java.util.Map">
         select tags,count(1) as num from shop where name like CONCAT('%',#{keyword},'%')
         <if test="categoryId != null">

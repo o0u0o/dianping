@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author aiuiot
@@ -29,14 +30,41 @@ public interface ShopModelMapper {
 
     int updateByPrimaryKey(ShopModel record);
 
-    /** 推荐 */
+    /**
+     * 推荐v1.0
+     * @param longitude 经度
+     * @param latitude  纬度
+     * @return
+     */
     List<ShopModel> recommend(@Param("longitude") BigDecimal longitude,
                               @Param("latitude") BigDecimal latitude);
 
-    /** 搜索 */
+    /**
+     * 根据标签分组进行搜索v1.0
+     * @param keyword       搜索关键字
+     * @param categoryId    服务类目ID
+     * @param tags          标签
+     * @return
+     */
+    List<Map<String, Object>> searchGroupByTags(@Param("keyword") String keyword,
+                                                @Param("categoryId") Integer categoryId,
+                                                @Param("tags") String tags);
+
+    /**
+     * 搜索门店v1.0
+     * @param longitude     经度
+     * @param latitude      纬度
+     * @param keyword       关键字
+     * @param orderby       排序
+     * @param categoryId    服务品类ID
+     * @param tags          标签
+     * @return
+     */
     List<ShopModel> search(@Param("longitude") BigDecimal longitude,
                            @Param("latitude") BigDecimal latitude,
-                           @Param("keyword")String keyword,
-                           @Param("categoryId")Integer categoryId);
+                           @Param("keyword") String keyword,
+                           @Param("orderby") Integer orderby,
+                           @Param("categoryId") Integer categoryId,
+                           @Param("tags") String tags);
 
 }

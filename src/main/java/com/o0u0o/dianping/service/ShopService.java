@@ -36,7 +36,7 @@ public interface ShopService {
     List<ShopModel> selectAll();
 
     /**
-     * 推荐附近门店
+     * 推荐附近门店v1.0
      * @param longitude 经度
      * @param latitude  纬度
      * @return
@@ -50,13 +50,22 @@ public interface ShopService {
     Integer countAllShop();
 
     /**
-     * 搜索门店
-     * @param longitude 经度
-     * @param latitude 纬度
-     * @param keyword 关键词
-     * @param orderby 排序
-     * @param categoryId 分类ID
-     * @param tags 标签
+     * 根据标签分组进行搜索v1.0
+     * @param keyword      关键字
+     * @param categoryId   品类ID
+     * @param tags         标签
+     * @return
+     */
+    List<Map<String, Object>> searchGroupByTags(String keyword, Integer categoryId, String tags);
+
+    /**
+     * 搜索门店v1.0
+     * @param longitude     经度
+     * @param latitude      纬度
+     * @param keyword       搜索关键词
+     * @param orderby       排序
+     * @param categoryId    品类ID
+     * @param tags          标签
      * @return
      */
     List<ShopModel> search(BigDecimal longitude,

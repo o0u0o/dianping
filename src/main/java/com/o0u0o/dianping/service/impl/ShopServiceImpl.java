@@ -135,6 +135,18 @@ public class ShopServiceImpl implements ShopService {
     }
 
     /**
+     * 根据标签分组进行搜索
+     * @param keyword      关键字
+     * @param categoryId   品类ID
+     * @param tags         标签
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> searchGroupByTags(String keyword, Integer categoryId, String tags) {
+        return shopModelMapper.searchGroupByTags(keyword, categoryId, tags);
+    }
+
+    /**
      * 搜索门店
      * @param longitude 经度
      * @param latitude 纬度
@@ -145,16 +157,19 @@ public class ShopServiceImpl implements ShopService {
      * @return
      */
     @Override
-    public List<ShopModel> search(BigDecimal longitude, BigDecimal latitude,
-                                  String keyword, Integer orderby,
-                                  Integer categoryId, String tags) {
-//        List<ShopModel> shopModelList = shopModelMapper.search(longitude,latitude,keyword,orderby,categoryId,tags);
-//        shopModelList.forEach(shopModel -> {
-//            shopModel.setSellerModel(sellerService.get(shopModel.getSellerId()));
-//            shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
-//        });
-//        return shopModelList;
-        return null;
+    public List<ShopModel> search(BigDecimal longitude,
+                                  BigDecimal latitude,
+                                  String keyword,
+                                  Integer orderby,
+                                  Integer categoryId,
+                                  String tags) {
+        List<ShopModel> shopModelList = shopModelMapper.search(longitude, latitude, keyword, orderby, categoryId, tags);
+        //聚合信息
+        shopModelList.forEach(shopModel -> {
+            shopModel.setSellerModel(sellerService.get(shopModel.getSellerId()));
+            shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
+        });
+        return shopModelList;
     }
 
     /**

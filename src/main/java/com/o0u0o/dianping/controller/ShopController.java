@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author aiuiot
@@ -37,7 +38,7 @@ public class ShopController {
     /**
      * 推荐服务v1.0
      * @param longitude 经度
-     * @param latitude 纬度
+     * @param latitude  纬度
      * @return
      */
     @RequestMapping("/recommend")
@@ -54,13 +55,13 @@ public class ShopController {
     }
 
     /**
-     *
-     * @param longitude
-     * @param latitude
-     * @param keyword
+     * 搜索服务v1.0
+     * @param longitude 经度
+     * @param latitude  纬度
+     * @param keyword   搜索关键字
      * @param orderby
-     * @param category
-     * @param tags
+     * @param categoryId  分类ID
+     * @param tags      标签
      * @return
      * @throws BusinessException
      * @throws IOException
@@ -71,19 +72,23 @@ public class ShopController {
                     @RequestParam(name = "latitude") BigDecimal latitude,
                     @RequestParam(name = "keyword") String keyword,
                     @RequestParam(name = "orderby", required = false) Integer orderby,
-                    @RequestParam(name = "category", required = false) Integer category,
+                    @RequestParam(name = "categoryId", required = false) Integer categoryId,
                     @RequestParam(name = "tags", required = false) String tags) throws BusinessException, IOException {
+        //校验参数是否合法
         if (StringUtils.isEmpty(keyword) || longitude == null || latitude == null){
             throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR);
         }
 
-        List<ShopModel> shopModelList = (List<ShopModel>)shopService.searchES(longitude, latitude, keyword, orderby, category, tags).get("shop");
+        //1、根据经纬度搜索
+        List<ShopModel> shopModelList = (List<ShopModel>)shopService.search(longitude, latitude, keyword, orderby, categoryId, tags);
+        //2、查询系统有的服务类目
         List<CategoryModel> categoryModelList = categoryService.selectAll();
-        //List<Map<String, Object>> tagsAggregation = shopService.searchGroupByTags(keyword, category, tags);
+        //3、标签聚合搜索
+        List<Map<String, Object>> tagsAggregation = shopService.searchGroupByTags(keyword, categoryId, tags);
         HashMap<Object, Object> resMap = new HashMap<>();
         resMap.put("shop", shopModelList);
         resMap.put("category", categoryModelList);
-        //resMap.put("tags", tagsAggregation);
+        resMap.put("tags", tagsAggregation);
         return R.success(resMap);
     }
 }
