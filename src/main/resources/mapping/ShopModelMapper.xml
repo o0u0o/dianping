@@ -223,7 +223,7 @@
     <select id="countAllShop"  resultType="java.lang.Integer">
     select
     count(1)
-    from s       hop
+    from shop
   </select>
 
     <select id="recommend" resultMap="BaseResultMap">

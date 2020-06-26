@@ -28,6 +28,7 @@ import java.util.List;
 @Controller("/admin/shop")
 @RequestMapping("/admin/shop")
 public class ShopController {
+
     @Autowired
     private ShopService shopService;
 
@@ -79,10 +80,7 @@ public class ShopController {
 
         shopService.create(shopModel);
 
-
         return "redirect:/admin/shop/index";
-
-
     }
 
 }

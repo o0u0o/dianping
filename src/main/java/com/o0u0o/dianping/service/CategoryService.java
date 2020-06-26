@@ -34,7 +34,7 @@ public interface CategoryService {
     List<CategoryModel> selectAll();
 
     /**
-     *
+     * 统计所有分类
      * @return
      */
     Integer countAllCategory();

@@ -74,7 +74,7 @@ public class ShopServiceImpl implements ShopService {
             throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR, "类目不存在");
         }
 
-        shopModelMapper.insert(shopModel);
+        shopModelMapper.insertSelective(shopModel);
         return get(shopModel.getId());
     }
 
@@ -125,9 +125,13 @@ public class ShopServiceImpl implements ShopService {
         return shopModelList;
     }
 
+    /**
+     * 统计门店
+     * @return
+     */
     @Override
     public Integer countAllShop() {
-        return null;
+        return shopModelMapper.countAllShop();
     }
 
     /**

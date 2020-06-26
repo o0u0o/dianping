@@ -44,6 +44,7 @@ public class SellerController {
     @RequestMapping("/index")
     @AdminPermission
     public ModelAndView index(PageQuery pageQuery){
+        //设置分类
         PageHelper.startPage(pageQuery.getPage(), pageQuery.getSize());
         List<SellerModel> sellerModelList = sellerService.selectAll();
         PageInfo<SellerModel> sellerModelPageInfo = new PageInfo<>(sellerModelList);

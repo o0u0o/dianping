@@ -3,7 +3,9 @@ package com.o0u0o.dianping.controller.admin;
 import com.o0u0o.dianping.commom.AdminPermission;
 import com.o0u0o.dianping.commom.enums.BusinessErrorEnum;
 import com.o0u0o.dianping.commom.exception.BusinessException;
+import com.o0u0o.dianping.service.CategoryService;
 import com.o0u0o.dianping.service.SellerService;
+import com.o0u0o.dianping.service.ShopService;
 import com.o0u0o.dianping.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,6 +44,12 @@ public class AdminController {
     private UserService userService;
 
     @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private ShopService shopService;
+
+    @Autowired
     private SellerService sellerService;
 
     public static final String CURRENT_ADMIN_SESSION = "currentAdminSession";
@@ -57,6 +65,8 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
         modelAndView.addObject("userCount", userService.countAllUser());
         modelAndView.addObject("sellerCount", sellerService.countAllSeller());
+        modelAndView.addObject("shopCount", shopService.countAllShop());
+        modelAndView.addObject("categoryCount", categoryService.countAllCategory());
         modelAndView.addObject("CONTROLLER_NAME", "admin");
         modelAndView.addObject("ACTION_NAME","index");
         return modelAndView;
