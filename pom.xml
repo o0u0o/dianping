@@ -90,7 +90,9 @@
             <version>1.2.10</version>
         </dependency>
 
-        <!--	elasticsearch 版本需要一致	-->
+        <!--	elasticsearch 版本需要一致
+        	rest-high-level-client 基于elastic 更高的封装的包
+        	-->
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
@@ -106,6 +108,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-client</artifactId>
