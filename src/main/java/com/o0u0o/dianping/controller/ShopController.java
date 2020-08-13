@@ -80,7 +80,35 @@ public class ShopController {
         }
 
         //1、根据经纬度搜索
-        List<ShopModel> shopModelList = (List<ShopModel>)shopService.search(longitude, latitude, keyword, orderby, categoryId, tags);
+//        List<ShopModel> shopModelList = (List<ShopModel>)shopService.search(longitude, latitude, keyword, orderby, categoryId, tags);
+        List<ShopModel> shopModelList = (List<ShopModel>)shopService.searchES(longitude, latitude, keyword, orderby, categoryId, tags).get("shop");
+
+        //2、查询系统有的服务类目
+        List<CategoryModel> categoryModelList = categoryService.selectAll();
+        //3、标签聚合搜索
+        List<Map<String, Object>> tagsAggregation = shopService.searchGroupByTags(keyword, categoryId, tags);
+        HashMap<Object, Object> resMap = new HashMap<>();
+        resMap.put("shop", shopModelList);
+        resMap.put("category", categoryModelList);
+        resMap.put("tags", tagsAggregation);
+        return R.success(resMap);
+    }
+
+    @RequestMapping("/v2/search/")
+    @ResponseBody
+    public R searchEs(@RequestParam(name = "longitude") BigDecimal longitude,
+                      @RequestParam(name = "latitude") BigDecimal latitude,
+                      @RequestParam(name = "keyword") String keyword,
+                      @RequestParam(name = "orderby", required = false) Integer orderby,
+                      @RequestParam(name = "categoryId", required = false) Integer categoryId,
+                      @RequestParam(name = "tags", required = false) String tags) throws BusinessException, IOException {
+        //校验参数是否合法
+        if (StringUtils.isEmpty(keyword) || longitude == null || latitude == null){
+            throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR);
+        }
+
+        //1、根据经纬度搜索
+        List<ShopModel> shopModelList = (List<ShopModel>)shopService.searchES(longitude, latitude, keyword, orderby, categoryId, tags).get("shop");
         //2、查询系统有的服务类目
         List<CategoryModel> categoryModelList = categoryService.selectAll();
         //3、标签聚合搜索

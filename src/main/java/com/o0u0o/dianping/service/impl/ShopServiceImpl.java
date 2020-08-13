@@ -183,18 +183,27 @@ public class ShopServiceImpl implements ShopService {
      * @return
      */
     @Override
-    public Map<String, Object> searchES(BigDecimal longitude, BigDecimal latitude, String keyword, Integer orderby, Integer categoryId, String tags) throws IOException {
+    public Map<String, Object> searchES(BigDecimal longitude,
+                                        BigDecimal latitude,
+                                        String keyword,
+                                        Integer orderby,
+                                        Integer categoryId,
+                                        String tags) throws IOException {
         Map<String, Object> result = new HashMap<>();
 
-        // 构建MatchQuery 查询方式
+        // 构建MatchQuery 查询方式 传入索引名"shop"
         SearchRequest searchRequest = new SearchRequest("shop");
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         sourceBuilder.query(QueryBuilders.matchQuery("name", keyword));
+        //设置超时时间
         sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
+        //将sourceBuilder传入到searchRequest
         searchRequest.source(sourceBuilder);
 
         List<Integer> shopIdsList = new ArrayList<>();
         SearchResponse searchResponse = highLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+
+        //拿到响应结果 hits命中的内容 将hits数组遍历出来
         SearchHit[] hits = searchResponse.getHits().getHits();
         for (SearchHit hit : hits) {
             shopIdsList.add(new Integer(hit.getSourceAsMap().get("id").toString()));

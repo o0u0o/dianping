@@ -10,20 +10,24 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @Author aiuiot
  * @Date 2020/3/13 1:58 下午
- * @Descripton:
+ * @Descripton: Elasticsearch相关配置
  **/
 @Configuration
 public class ElasticsearchRestClient {
+
     @Value("${elasticsearch.ip}")
     String ipAddress;
 
+    /**
+     * 构造highLevelClient 用于其他bean
+     * @return
+     */
     @Bean(name="highLevelClient")
     public RestHighLevelClient highLevelClient(){
         String[] address = ipAddress.split(":");
         String ip = address[0];
         int port = Integer.valueOf(address[1]);
-        HttpHost httpHost = new HttpHost(ip,port,"http");
+        HttpHost httpHost = new HttpHost(ip, port,"http");
         return new RestHighLevelClient(RestClient.builder(new HttpHost[]{httpHost}));
-
     }
 }

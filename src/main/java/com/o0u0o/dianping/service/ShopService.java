@@ -76,7 +76,7 @@ public interface ShopService {
                            String tags);
 
     /**
-     *
+     * 搜索门店2.0
      * @param longitude
      * @param latitude
      * @param keyword
@@ -86,9 +86,9 @@ public interface ShopService {
      * @return
      */
     Map<String, Object> searchES(BigDecimal longitude,
-                 BigDecimal latitude,
-                 String keyword,
-                 Integer orderby,
-                 Integer categoryId,
-                 String tags) throws IOException;
+                                 BigDecimal latitude,
+                                 String keyword,
+                                 Integer orderby,
+                                 Integer categoryId,
+                                 String tags) throws IOException;
 }

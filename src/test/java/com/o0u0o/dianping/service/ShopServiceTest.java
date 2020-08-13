@@ -33,4 +33,8 @@ public class ShopServiceTest extends DianpingApplicationTests {
         List<ShopModel> shopModelList = shopService.search(longitude, latitude, keyword, orderby, categoryId, tags);
         log.info("【搜索结果】={}", gson.toJson(shopModelList));
     }
+
+    public void searchES(){
+
+    }
 }
