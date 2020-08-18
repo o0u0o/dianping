@@ -1,6 +1,5 @@
 package com.o0u0o.dianping.commom.enums;
 
-import lombok.Data;
 import lombok.Getter;
 
 /**

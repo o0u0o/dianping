@@ -107,10 +107,12 @@ public class ShopController {
             throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR);
         }
 
-        //1、根据经纬度搜索
+        //1、根据经纬度搜索 ElasticSearch 搜索
         List<ShopModel> shopModelList = (List<ShopModel>)shopService.searchES(longitude, latitude, keyword, orderby, categoryId, tags).get("shop");
+
         //2、查询系统有的服务类目
         List<CategoryModel> categoryModelList = categoryService.selectAll();
+
         //3、标签聚合搜索
         List<Map<String, Object>> tagsAggregation = shopService.searchGroupByTags(keyword, categoryId, tags);
         HashMap<Object, Object> resMap = new HashMap<>();
