@@ -14,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
  **/
 public interface UserService {
 
+
     /**
      * 获取用户
      * @param id
