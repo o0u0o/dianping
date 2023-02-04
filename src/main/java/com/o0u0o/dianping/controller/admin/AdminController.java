@@ -27,7 +27,7 @@ import static com.o0u0o.dianping.commom.utils.encryptPwdUtil.encodeByMd5;
  * @Date 2020/3/8 6:16 下午
  * @Descripton: 管理员控制器
  **/
-@Controller("/admin/admin")
+@Controller("e")
 @RequestMapping("/admin/admin")
 public class AdminController {
 

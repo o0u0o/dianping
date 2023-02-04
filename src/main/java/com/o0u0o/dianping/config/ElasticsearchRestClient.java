@@ -20,7 +20,7 @@ public class ElasticsearchRestClient {
 
     /**
      * 构造highLevelClient 用于其他bean
-     * @return
+     * @return RestHighLevelClient
      */
     @Bean(name="highLevelClient")
     public RestHighLevelClient highLevelClient(){

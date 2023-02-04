@@ -92,6 +92,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="com.o0u0o.dianping.model.CategoryModel">
         update category
         set created_at = #{createdAt,jdbcType=TIMESTAMP},
