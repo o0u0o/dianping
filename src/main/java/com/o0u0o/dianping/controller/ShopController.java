@@ -80,8 +80,8 @@ public class ShopController {
         }
 
         //1、根据经纬度搜索
-//        List<ShopModel> shopModelList = (List<ShopModel>)shopService.search(longitude, latitude, keyword, orderby, categoryId, tags);
-        List<ShopModel> shopModelList = (List<ShopModel>)shopService.searchES(longitude, latitude, keyword, orderby, categoryId, tags).get("shop");
+        List<ShopModel> shopModelList = (List<ShopModel>)shopService.search(longitude, latitude, keyword, orderby, categoryId, tags);
+//        List<ShopModel> shopModelList = (List<ShopModel>)shopService.searchES(longitude, latitude, keyword, orderby, categoryId, tags).get("shop");
 
         //2、查询系统有的服务类目
         List<CategoryModel> categoryModelList = categoryService.selectAll();

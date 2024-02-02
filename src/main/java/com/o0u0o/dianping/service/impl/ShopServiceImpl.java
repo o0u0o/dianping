@@ -65,7 +65,7 @@ public class ShopServiceImpl implements ShopService {
         }
 
         if (sellerModel.getDisabledFlag().intValue() == 1){
-            throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR, "商户被禁用");
+            throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR, "商户已被禁用");
         }
 
         //校验类目
@@ -81,7 +81,7 @@ public class ShopServiceImpl implements ShopService {
     /**
      * 根据门店ID获取门店
      * @param id 门店ID
-     * @return
+     * @return ShopModel
      */
     @Override
     public ShopModel get(Integer id) {

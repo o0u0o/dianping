@@ -36,7 +36,7 @@ public class ShopController {
     /**
      * 门店列表
      * @param pageQuery
-     * @return
+     * @return ModelAndView
      */
     @RequestMapping("/index")
     @AdminPermission

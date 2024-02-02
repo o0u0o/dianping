@@ -44,7 +44,6 @@ public class ShopCreateReq {
     private Integer sellerId;
 
     @NotBlank(message = "图标不能为空")
-
     private String iconUrl;
 
 }

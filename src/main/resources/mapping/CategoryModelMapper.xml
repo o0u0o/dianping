@@ -9,19 +9,23 @@
         <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
         <result column="sort" jdbcType="INTEGER" property="sort" />
     </resultMap>
+
     <sql id="Base_Column_List">
         id, created_at, updated_at, name, icon_url, sort
     </sql>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from category
         where id = #{id,jdbcType=INTEGER}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from category
         where id = #{id,jdbcType=INTEGER}
     </delete>
+
     <insert id="insert" parameterType="com.o0u0o.dianping.model.CategoryModel">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
@@ -31,6 +35,7 @@
         values (#{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR},
         #{iconUrl,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER})
     </insert>
+
     <insert id="insertSelective" parameterType="com.o0u0o.dianping.model.CategoryModel">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
@@ -71,6 +76,7 @@
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.o0u0o.dianping.model.CategoryModel">
         update category
         <set>
@@ -104,7 +110,10 @@
     </update>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List"/> from category order by sort DESC,id ASC
+        select
+            <include refid="Base_Column_List"/>
+        from
+            category order by sort DESC,id ASC
     </select>
 
     <select id="countAllCategory"  resultType="java.lang.Integer">
