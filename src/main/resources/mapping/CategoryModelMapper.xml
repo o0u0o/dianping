@@ -110,15 +110,16 @@
     </update>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        select
+        SELECT
             <include refid="Base_Column_List"/>
-        from
+        FROM
             category order by sort DESC,id ASC
     </select>
 
     <select id="countAllCategory"  resultType="java.lang.Integer">
-    select
-    count(1)
-    from category
+        SELECT
+            count(1)
+        FROM
+            category
   </select>
 </mapper>

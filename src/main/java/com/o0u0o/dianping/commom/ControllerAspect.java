@@ -49,7 +49,8 @@ public class ControllerAspect {
         String email = (String) httpServletRequest.getSession().getAttribute(AdminController.CURRENT_ADMIN_SESSION);
         if (email == null){
             if (adminPermission.produceType().equals("text/html")){
-                httpServletResponse.sendRedirect("/admin/admin/loginpage");
+                //重定向到登录页
+                httpServletResponse.sendRedirect("/admin/admin/login-page");
                 return null;
             } else {
                 CommonError commonError = new CommonError(BusinessErrorEnum.ADMIN_SHOULD_LOGIN);

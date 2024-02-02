@@ -5,6 +5,7 @@ import com.o0u0o.dianping.commom.enums.BusinessErrorEnum;
 import com.o0u0o.dianping.commom.exception.BusinessException;
 import com.o0u0o.dianping.model.CategoryModel;
 import com.o0u0o.dianping.model.ShopModel;
+import com.o0u0o.dianping.model.vo.ShopListVO;
 import com.o0u0o.dianping.service.CategoryService;
 import com.o0u0o.dianping.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ShopController {
     private CategoryService categoryService;
 
     /**
-     * 推荐服务v1.0
+     * <h1>推荐服务v1.0</h1>
      * @param longitude 经度
      * @param latitude  纬度
      * @return
@@ -50,7 +51,7 @@ public class ShopController {
             throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR);
         }
 
-        List<ShopModel> shopModelList = shopService.recommend(longitude, latitude);
+        List<ShopListVO> shopModelList = shopService.recommend(longitude, latitude);
         return R.success(shopModelList);
     }
 

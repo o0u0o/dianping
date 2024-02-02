@@ -229,11 +229,13 @@
 
     <!-- 推荐 推荐 距离因子95%受地理 评分因子5%收评分影响  -->
     <select id="recommend" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        ,ceil(1 + 1000*(2 * 6378.137* ASIN(SQRT(POW(SIN(PI() * (#{latitude} - latitude) / 360), 2) + COS(PI() * #{latitude} / 180)
-        * COS(latitude* PI() / 180) * POW(SIN(PI() * (#{longitude} - longitude) / 360), 2))))) AS distance
-        from shop order by (0.95*1/log10(distance)+ 0.05*remark_score/5)  DESC
+        SELECT
+            <include refid="Base_Column_List" />,
+            ceil(1 + 1000*(2 * 6378.137* ASIN(SQRT(POW(SIN(PI() * (#{latitude} - latitude) / 360), 2) + COS(PI() * #{latitude} / 180) * COS(latitude* PI() / 180) * POW(SIN(PI() * (#{longitude} - longitude) / 360), 2))))) AS distance
+        FROM
+            shop
+        ORDER BY
+            (0.95*1/log10(distance)+ 0.05*remark_score/5)  DESC
     </select>
 
     <!--  门店搜索  -->

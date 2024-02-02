@@ -76,7 +76,7 @@ public class AdminController {
      * 跳转至登录页面
      * @return
      */
-    @RequestMapping("/loginpage")
+    @RequestMapping("/login-page")
     public ModelAndView loginPage(){
         ModelAndView modelAndView = new ModelAndView("/admin/admin/login");
         return modelAndView;
@@ -88,7 +88,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam(name = "email") String email,
-                              @RequestParam(name = "password") String password) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
+                        @RequestParam(name = "password") String password) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
         if (StringUtils.isEmpty(email)||StringUtils.isEmpty(password)){
             throw new BusinessException(BusinessErrorEnum.PARAMETER_VALIDATION_ERROR, "用户名密码不能为空");
         }

@@ -6,6 +6,7 @@ import com.o0u0o.dianping.dal.ShopModelMapper;
 import com.o0u0o.dianping.model.CategoryModel;
 import com.o0u0o.dianping.model.SellerModel;
 import com.o0u0o.dianping.model.ShopModel;
+import com.o0u0o.dianping.model.vo.ShopListVO;
 import com.o0u0o.dianping.service.CategoryService;
 import com.o0u0o.dianping.service.SellerService;
 import com.o0u0o.dianping.service.ShopService;
@@ -17,6 +18,7 @@ import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -115,14 +117,19 @@ public class ShopServiceImpl implements ShopService {
      * @return
      */
     @Override
-    public List<ShopModel> recommend(BigDecimal longitude, BigDecimal latitude) {
+    public List<ShopListVO> recommend(BigDecimal longitude, BigDecimal latitude) {
         List<ShopModel> shopModelList =  shopModelMapper.recommend(longitude, latitude);
         //聚合卖家个分类
-        shopModelList.forEach(shopModel -> {
+        List<ShopListVO> result = shopModelList.stream().map(shopModel -> {
             shopModel.setSellerModel(sellerService.get(shopModel.getSellerId()));
             shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
-        });
-        return shopModelList;
+
+            ShopListVO shopListVO = new ShopListVO();
+            BeanUtils.copyProperties(shopModel, shopListVO);
+            return shopListVO;
+        }).collect(Collectors.toList());
+
+        return result;
     }
 
     /**

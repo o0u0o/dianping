@@ -1,6 +1,10 @@
 # DIANPING 点评
 介绍： 基于elasticSearch + Spark的智能搜索和推荐系统
 
+-- 管理后台：http://localhost:8010/admin/admin/index
+-- 客户端：http://localhost:8010/static/index.html
+
+
 ## 基础服务搭建
 - Java环境: JDK1.8
 - 数据库: MySQL5.6+

@@ -22,6 +22,9 @@ public class ShopServiceTest extends DianpingApplicationTests {
 
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+    /**
+     * v1.0 的搜索
+     */
     @Test
     public void search() {
         BigDecimal longitude = new BigDecimal(104.11415835449222);

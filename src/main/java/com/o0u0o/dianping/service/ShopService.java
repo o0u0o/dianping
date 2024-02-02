@@ -2,6 +2,7 @@ package com.o0u0o.dianping.service;
 
 import com.o0u0o.dianping.commom.exception.BusinessException;
 import com.o0u0o.dianping.model.ShopModel;
+import com.o0u0o.dianping.model.vo.ShopListVO;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -36,12 +37,12 @@ public interface ShopService {
     List<ShopModel> selectAll();
 
     /**
-     * 推荐附近门店v1.0
+     * <h2>推荐附近门店v1.0</h2>
      * @param longitude 经度
      * @param latitude  纬度
      * @return
      */
-    List<ShopModel> recommend(BigDecimal longitude, BigDecimal latitude);
+    List<ShopListVO> recommend(BigDecimal longitude, BigDecimal latitude);
 
     /**
      * 统计门店

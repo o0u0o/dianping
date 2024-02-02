@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author aiuiot
- * @Date 2020/3/13 1:58 下午
- * @Descripton: Elasticsearch相关配置
+ * @author aiuiot
+ * @since  2020/3/13 1:58 下午
+ * @deprecated : Elasticsearch相关配置
  **/
 @Configuration
 public class ElasticsearchRestClient {

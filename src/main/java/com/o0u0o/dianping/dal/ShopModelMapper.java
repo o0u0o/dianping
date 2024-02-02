@@ -31,10 +31,10 @@ public interface ShopModelMapper {
     int updateByPrimaryKey(ShopModel record);
 
     /**
-     * 推荐v1.0
+     * <h2>推荐v1.0</h2>
      * @param longitude 经度
      * @param latitude  纬度
-     * @return
+     * @return List<ShopModel> 附近的门店（95%由距离因子）
      */
     List<ShopModel> recommend(@Param("longitude") BigDecimal longitude,
                               @Param("latitude") BigDecimal latitude);
