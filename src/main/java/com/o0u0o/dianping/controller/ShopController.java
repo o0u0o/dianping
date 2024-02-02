@@ -56,7 +56,7 @@ public class ShopController {
     }
 
     /**
-     * 搜索服务v1.0
+     * <h2>搜索服务v1.0</h2>
      * @param longitude 经度
      * @param latitude  纬度
      * @param keyword   搜索关键字
