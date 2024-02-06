@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * @Author aiuiot
- * @Date 2020/6/9 1:16 下午
+ * <h1>品类接口</h1>
+ * @author  aiuiot
+ * @since  2020/6/9 1:16 下午
  * @Descripton: 品类接口
  **/
 @Controller("/category")
@@ -23,7 +24,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
-     * 所有品类
+     * <h2>所有品类列表</h2>
      * @return
      */
     @ResponseBody

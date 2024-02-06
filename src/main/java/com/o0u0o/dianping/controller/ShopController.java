@@ -22,8 +22,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author aiuiot
- * @Date 2020/3/6 9:09 上午
+ * <h1>门店服务接口</h1>
+ * @author  aiuiot
+ * @since  2020/3/6 9:09 上午
  * @Descripton: 门店服务
  **/
 @Controller("/shop")
