@@ -1,8 +1,9 @@
 # DIANPING 点评
 介绍： 基于elasticSearch + Spark的智能搜索和推荐系统
 
--- 管理后台：http://localhost:8010/admin/admin/index
--- 客户端：http://localhost:8010/static/index.html
+- 管理后台：http://localhost:8010/admin/admin/index
+
+- 客户端：http://localhost:8010/static/index.html
 
 
 ## 基础服务搭建
@@ -11,7 +12,7 @@
 - Java框架版本: SpringBoot2.1.5
 - Maven: Maven3.2
 - 机器学习框架: Spark Mllib 2.4.4
-- 搜索中间件: ElasticSearch7.3.0
+- 搜索中间件: ElasticSearch:7.3.0 + kibana:7.3.0
 
 ### 品类管理服务
 - 新增品类

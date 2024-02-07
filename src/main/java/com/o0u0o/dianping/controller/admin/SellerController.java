@@ -25,8 +25,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @Author aiuiot
- * @Date 2020/6/9 11:53 上午
+ * @author  aiuiot
+ * @since  2020/6/9 11:53 上午
  * @Descripton: 商户接口
  **/
 @Controller("/admin/seller")

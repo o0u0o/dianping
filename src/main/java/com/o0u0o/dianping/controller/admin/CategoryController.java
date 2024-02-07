@@ -21,8 +21,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @Author aiuiot
- * @Date 2020/3/8 7:48 下午
+ * @author  aiuiot
+ * @since  2020/3/8 7:48 下午
  * @Descripton: 品类接口
  **/
 @Controller("/admin/category")
@@ -34,7 +34,7 @@ public class CategoryController {
 
 
     /**
-     * 品类列表
+     * <h2>品类列表</h2>
      * @param pageQuery
      * @return
      */

@@ -21,8 +21,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @Author aiuiot
- * @Date 2020/3/8 8:54 下午
+ * @author  aiuiot
+ * @since  2020/3/8 8:54 下午
  * @Descripton: 门店接口
  **/
 @Controller("/admin/shop")

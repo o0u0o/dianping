@@ -23,8 +23,8 @@ import java.security.NoSuchAlgorithmException;
 import static com.o0u0o.dianping.commom.utils.encryptPwdUtil.encodeByMd5;
 
 /**
- * @Author aiuiot
- * @Date 2020/3/8 6:16 下午
+ * @author  aiuiot
+ * @since  2020/3/8 6:16 下午
  * @Descripton: 管理员控制器
  **/
 @Controller("e")

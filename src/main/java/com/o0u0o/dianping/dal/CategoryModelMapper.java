@@ -7,14 +7,14 @@ import java.util.List;
 public interface CategoryModelMapper {
 
     /**
-     * 根据主键ID删除
+     * <h2>根据主键ID删除</h2>
      * @param id 主键ID
      * @return
      */
     int deleteByPrimaryKey(Integer id);
 
     /**
-     * 获取所有
+     * <h2>获取所有</h2>
      * @return
      */
     List<CategoryModel> selectAll();
