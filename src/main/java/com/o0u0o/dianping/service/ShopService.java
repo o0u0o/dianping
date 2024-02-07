@@ -84,7 +84,7 @@ public interface ShopService {
      * @param orderby
      * @param categoryId
      * @param tags
-     * @return
+     * @return Map<String, Object>
      */
     Map<String, Object> searchES(BigDecimal longitude,
                                  BigDecimal latitude,
