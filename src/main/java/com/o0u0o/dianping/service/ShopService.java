@@ -10,28 +10,28 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author aiuiot
- * @Date 2020/3/6 9:11 上午
+ * @author  aiuiot
+ * @since  2020/3/6 9:11 上午
  * @Descripton: 门店服务接口
  **/
 public interface ShopService {
 
     /**
-     * 创建门店
+     * <h2>创建门店</h2>
      * @param shopModel
-     * @return
+     * @return ShopModel
      */
     ShopModel create(ShopModel shopModel) throws BusinessException;
 
     /**
-     * 获取门店
+     * <h2>获取门店</h2>
      * @param id 门店ID
-     * @return
+     * @return ShopModel
      */
     ShopModel get(Integer id);
 
     /**
-     * 获取所有门店
+     * <h2>获取所有门店</h2>
      * @return
      */
     List<ShopModel> selectAll();
@@ -45,22 +45,22 @@ public interface ShopService {
     List<ShopListVO> recommend(BigDecimal longitude, BigDecimal latitude);
 
     /**
-     * 统计门店
+     * <h2>统计门店</h2>
      * @return
      */
     Integer countAllShop();
 
     /**
-     * 根据标签分组进行搜索v1.0
+     * <h2>根据标签分组进行搜索v1.0</h2>
      * @param keyword      关键字
      * @param categoryId   品类ID
      * @param tags         标签
-     * @return
+     * @return List<Map<String, Object>>
      */
     List<Map<String, Object>> searchGroupByTags(String keyword, Integer categoryId, String tags);
 
     /**
-     * 搜索门店v1.0
+     * <h2>搜索门店v1.0</h2>
      * @param longitude     经度
      * @param latitude      纬度
      * @param keyword       搜索关键词

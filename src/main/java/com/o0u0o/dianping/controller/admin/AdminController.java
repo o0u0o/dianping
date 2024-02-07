@@ -56,7 +56,7 @@ public class AdminController {
 
     /**
      * 跳转至管理员页面
-     * @return
+     * @return ModelAndView
      */
     @RequestMapping("/index")
     //@AdminPermission(produceType = "application/json")
@@ -74,17 +74,16 @@ public class AdminController {
 
     /**
      * 跳转至登录页面
-     * @return
+     * @return ModelAndView
      */
     @RequestMapping("/login-page")
     public ModelAndView loginPage(){
-        ModelAndView modelAndView = new ModelAndView("/admin/admin/login");
-        return modelAndView;
+        return new ModelAndView("/admin/admin/login");
     }
 
     /**
      * 登录接口
-     * @return
+     * @return ModelAndView
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam(name = "email") String email,

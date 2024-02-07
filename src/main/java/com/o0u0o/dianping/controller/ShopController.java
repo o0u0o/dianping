@@ -38,10 +38,10 @@ public class ShopController {
     private CategoryService categoryService;
 
     /**
-     * <h1>推荐服务v1.0</h1>
+     * <h2>推荐服务v1.0</h2>
      * @param longitude 经度
      * @param latitude  纬度
-     * @return
+     * @return R
      */
     @RequestMapping("/recommend")
     @ResponseBody
