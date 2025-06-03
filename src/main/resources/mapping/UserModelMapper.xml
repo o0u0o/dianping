@@ -86,25 +86,31 @@
   </insert>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from user
-    where id = #{id,jdbcType=INTEGER}
+    SELECT
+        <include refid="Base_Column_List" />
+    FROM
+        user
+    WHERE
+        id = #{id,jdbcType=INTEGER}
   </select>
 
   <select id="selectByTelephoneAndPassword" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from user
-    where telephone = #{telephone,jdbcType=VARCHAR}
-    and password = #{password, jdbcType=VARCHAR}
+    SELECT
+        <include refid="Base_Column_List" />
+    FROM
+        user
+    WHERE
+        telephone = #{telephone,jdbcType=VARCHAR}
+    AND
+        password = #{password, jdbcType=VARCHAR}
   </select>
 
   <!-- 统计用户数量 -->
   <select id="countAllUser" resultType="java.lang.Integer">
     SELECT
-    count(1)
-    from user
+        count(1)
+    FROM
+        user
   </select>
 
 </mapper>

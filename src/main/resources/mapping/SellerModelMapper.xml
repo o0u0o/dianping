@@ -15,29 +15,35 @@
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from seller
-        where id = #{id,jdbcType=INTEGER}
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM
+            seller
+        WHERE
+            id = #{id,jdbcType=INTEGER}
     </select>
 
     <select id="selectAll"  resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List" />
-        from seller
-        order by id ASC
+            <include refid="Base_Column_List" />
+        from
+            seller
+        order by
+            id ASC
     </select>
 
     <select id="countAllSeller"  resultType="java.lang.Integer">
-    select
-    count(1)
-    from seller
+        select
+            count(1)
+        from
+            seller
   </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-
-        delete from seller
-        where id = #{id,jdbcType=INTEGER}
+        delete from
+            seller
+        where
+            id = #{id,jdbcType=INTEGER}
     </delete>
 
     <insert id="insert" parameterType="com.o0u0o.dianping.model.SellerModel">
@@ -115,12 +121,15 @@
     </update>
 
     <update id="updateByPrimaryKey" parameterType="com.o0u0o.dianping.model.SellerModel">
-        update seller
-        set name = #{name,jdbcType=VARCHAR},
-        created_at = #{createdAt,jdbcType=TIMESTAMP},
-        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-        remark_score = #{remarkScore,jdbcType=DECIMAL},
-        disabled_flag = #{disabledFlag,jdbcType=INTEGER}
-        where id = #{id,jdbcType=INTEGER}
+        UPDATE
+            seller
+        SET
+            name = #{name,jdbcType=VARCHAR},
+            created_at = #{createdAt,jdbcType=TIMESTAMP},
+            updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+            remark_score = #{remarkScore,jdbcType=DECIMAL},
+            disabled_flag = #{disabledFlag,jdbcType=INTEGER}
+        WHERE
+            id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

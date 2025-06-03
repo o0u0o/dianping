@@ -40,7 +40,7 @@ public interface ShopService {
      * <h2>推荐附近门店v1.0</h2>
      * @param longitude 经度
      * @param latitude  纬度
-     * @return
+     * @return List<ShopListVO>
      */
     List<ShopListVO> recommend(BigDecimal longitude, BigDecimal latitude);
 

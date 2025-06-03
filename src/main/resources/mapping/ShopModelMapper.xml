@@ -26,19 +26,22 @@
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from shop
-        where id = #{id,jdbcType=INTEGER}
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM
+            shop
+        WHERE
+            id = #{id,jdbcType=INTEGER}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from shop
-        where id = #{id,jdbcType=INTEGER}
+        DELETE FROM
+            shop
+        WHERE
+            id = #{id,jdbcType=INTEGER}
     </delete>
 
     <insert id="insert" parameterType="com.o0u0o.dianping.model.ShopModel">
-
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
