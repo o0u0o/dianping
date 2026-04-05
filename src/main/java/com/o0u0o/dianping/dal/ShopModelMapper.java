@@ -52,6 +52,7 @@ public interface ShopModelMapper {
 
     /**
      * 搜索门店v1.0
+     * 通过经纬度计算距离
      * @param longitude     经度
      * @param latitude      纬度
      * @param keyword       关键字
